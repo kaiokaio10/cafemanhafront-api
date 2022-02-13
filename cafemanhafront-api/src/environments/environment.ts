@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  useHerokubackend: false,
+  server: false,
+  local: true,
+  envName: 'loc',
+  urlbackend: 'http://localhost:8080',
+  urlHome: 'http://localhost:4200/',
 };
 
 /*

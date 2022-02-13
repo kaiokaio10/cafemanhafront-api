@@ -1,0 +1,42 @@
+<p-toast></p-toast>
+<div class="content-section implementation">
+    <div class="card">
+        <h2>{{edicao? 'Alterar' : 'Cadastrar' }} Pessoa</h2>
+
+        <div class="p-fluid">
+            <div class="p-field">
+                <label for="nome">Nome *</label>
+                <input [(ngModel)]="dto.nome" ngDefaultControl maxlength="300" name="nome" type="text" pInputText>
+            </div>
+            <div class="p-field">
+                <label for="cpf">CPF *</label>
+                <p-inputMask [(ngModel)]="dto.cpf" name="cpf" ngDefaultControl mask="999.999.999-99"
+                    placeholder="000.000.000-00"></p-inputMask>
+            </div>
+
+            <label for="cafemanha">Item Café da Manhã</label>
+            <p-listbox [options]="listaItemCafeManha" [(ngModel)]="dto.listaSelecionado" [metaKeySelection]="false"
+                [checkbox]="true" [filter]="true" [multiple]="true" optionLabel="nome" 
+                emptyFilterMessage="Nenhum registro encontrado" emptyMessage="Nenhum Item café da manhã cadastrado">
+            </p-listbox>
+
+        </div>
+
+        <div class="p-field p-col-12 p-md-4" style="padding-top: 22px;">
+            <div class="p-fluid p-formgrid p-grid ">
+                <div class="p-field p-col ">
+                    <button (click)="save()" pButton pRipple type="button" label="salvar" class="p-button-rounded"
+                        [label]="edicao?'Alterar': 'Salvar'"></button>
+                </div>
+                <div class="p-field p-col">
+                    <button pButton pRipple type="button" label="Voltar" class="p-button-rounded p-button-secondary "
+                        (click)="voltar()"></button>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>

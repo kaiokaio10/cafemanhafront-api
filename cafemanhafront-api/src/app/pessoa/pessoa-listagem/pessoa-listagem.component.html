@@ -1,0 +1,94 @@
+<div class="content-section implementation">
+    <div class="card">
+        <h2>Pesquisar por pessoa </h2>
+        <div class="p-formgroup-inline">
+            <div class="p-field p-fluid p-col-12 p-md-4 ">
+                <div class="p-fluid">
+                    <div class="p-field">
+                        <label> Nome </label>
+                        <input [(ngModel)]="dto.nome" name="nome" type="nome" pInputText maxlength="100">
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-field p-col-12 p-md-4" style="padding-top: 22px;">
+                <div class="p-fluid p-formgrid p-grid ">
+                    <div class="p-field p-col ">
+                        <button (click)="pesquisar()" pButton pRipple type="button" label="Consultar"
+                            class="p-button-rounded"></button>
+                    </div>
+                    <div class="p-field p-col">
+                        <button (click)="limpar()" pButton pRipple type="button" label="Limpar"
+                            class="p-button-rounded p-button-secondary"></button>
+                    </div>
+                    <div class="p-field p-col ">
+                        <button (click)="openNovo()" pButton pRipple type="button" label="Novo"
+                            class="p-button-rounded p-button-success"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <p-table [value]="listaPessoa" *ngIf="exibir" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+            currentPageReportTemplate=" " responsiveLayout="scroll">
+            <ng-template pTemplate="header">
+
+                <tr>
+                    <th>Nome </th>
+                    <th>CPF</th>
+                    <th>Ações</th>
+                </tr>
+            </ng-template>
+
+            <p-confirmPopup></p-confirmPopup>
+
+            <ng-template pTemplate="body" let-dtoView>
+                <tr>
+                    <td>{{dtoView.nome}}</td>
+                    <td>{{dtoView.cpf}}</td>
+                    <td>
+                        <p-button (click)="confirmar(dtoView.id,$event)" pTooltip="Excluir" icon="pi pi-trash">
+                        </p-button>
+                        &nbsp;
+                        <p-button (click)="openEditar(dtoView.id)" pTooltip="alterar" icon="pi pi-pencil"
+                            tooltipPosition="left"></p-button>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage" let-columns>
+                <tr>
+                    <td [attr.colspan]="columns && columns.length">
+                        Nenhuma pessoa encontrado
+                    </td>
+                </tr>
+            </ng-template>
+
+
+
+        </p-table>
+        <p-dialog header="dados" [(visible)]="display" style="min-height: 550px;" [baseZIndex]="10000">
+            <div class="p-grid">
+                <div class="p-col-4">
+                    <p>nome:</p>
+                </div>
+                <div class="p-col-9">
+                    <span>{{dto.nome}}</span>
+                </div>
+            </div>
+            <div class="p-grid">
+                <div class="p-col-4">
+                    <p>cpf:</p>
+                </div>
+                <div class="p-col-9">
+                    <span>{{dto.cpf}}</span>
+                </div>
+            </div>
+            <ng-template pTemplate="footer">
+                <p-button icon="pi pi-check" (click)="display=false" label="Ok" styleClass="p-button-text">
+                </p-button>
+            </ng-template>
+
+        </p-dialog>
+    </div>
+</div>
