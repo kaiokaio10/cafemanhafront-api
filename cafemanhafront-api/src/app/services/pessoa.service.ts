@@ -37,7 +37,7 @@ export class PessoaService {
     }
 
     pesquisar(dto: Pessoa): Observable<Pessoa[]> {
-        return this.http.post<Pessoa[]>(`${this.apiURL}/pesquisar/`, dto);
+        return this.http.post<Pessoa[]>(`${this.apiURL}/pesquisar`, dto);
     }
 
     visualizar(lista: Pessoa[]): Promise<any> {
@@ -45,6 +45,9 @@ export class PessoaService {
             .toPromise()
             .then(Response => console.log(Response));
 
+    }
+    visualizarListaCompleta(): Observable<Pessoa[]> {
+        return this.http.get<Pessoa[]>(`${this.apiURL}/listartodos`);
     }
 
 }

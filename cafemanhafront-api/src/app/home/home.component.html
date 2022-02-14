@@ -1,0 +1,47 @@
+<h2>Participantes Café da Manhã</h2>
+
+<p-table  [value]="listaPessoa" dataKey="id" responsiveLayout="scroll">
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 3rem"></th>
+            <th pSortableColumn="nome">Nome <p-sortIcon field="nome"></p-sortIcon></th>
+            <th pSortableColumn="cpf">CPF <p-sortIcon field="cpf"></p-sortIcon></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-pessoa let-expanded="expanded">
+        <tr>
+            <td>
+                <button type="button" pButton pRipple [pRowToggler]="pessoa" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+            </td>
+            <td>{{pessoa.nome}}</td>
+            <td>{{pessoa.cpf}}</td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-pessoa>
+        <tr>
+            <td colspan="7">
+                <div class="p-3">
+                    <p-table [value]="pessoa.listaSelecionado" dataKey="id">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th pSortableColumn="nome">Nome <p-sortIcon field="nome"></p-sortIcon></th>
+                                <th pSortableColumn="descricao">Descrição <p-sortIcon field="descricao"></p-sortIcon></th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-item>
+                            <tr>
+                                <td>{{item.nome}}</td>
+                                <td>{{item.descricao}}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="6">Nenhum Participante Cadastrado</td>
+        </tr>
+    </ng-template>
+</p-table>

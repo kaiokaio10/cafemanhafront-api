@@ -20,6 +20,8 @@ import { TableModule } from 'primeng/table';
 import {ConfirmPopupModule} from 'primeng/confirmpopup';
 import {DialogModule} from 'primeng/dialog';
 import {ListboxModule} from 'primeng/listbox';
+import { HomeComponent } from './home/home.component';
+import { MenuComponent } from './menu/menu.component';
 
 
 
@@ -27,7 +29,9 @@ import {ListboxModule} from 'primeng/listbox';
   declarations: [
     AppComponent,
     PessoaCadastroComponent,
-    PessoaListagemComponent
+    PessoaListagemComponent,
+    HomeComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,30 @@
+body {
+    font-size: 100%;
+    margin: 30px 60px;
+}
+.comma-list {
+    padding: 0;
+}
+.comma-list > * {
+    display: inline;
+}
+.comma-list > *:after {
+    content: ',';
+}
+.comma-list > *:last-child:after {
+    content: '';
+}
+@media (min-width: 768px) {
+    .comma-list {
+        list-style: square;
+        padding-left: 30px;
+   }
+    .comma-list > * {
+        display: list-item;
+        width: 33%;
+        float: left;
+   }
+    .comma-list > *:after {
+        content: '';
+   }
+}

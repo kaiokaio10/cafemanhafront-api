@@ -45,6 +45,10 @@ export class PessoaCadastroComponent implements OnInit {
       this.messageService.add({ severity: 'warn', summary: 'Atenção', detail: 'CPF  não preenchido.' });
       return false;
     }
+    if (this.dto.listaSelecionado.length === 0) {
+      this.messageService.add({ severity: 'warn', summary: 'Atenção', detail: 'Nenhum item do café da manha selecionado  não preenchido.' });
+      return false;
+    }
 
     return true;
   }
@@ -55,7 +59,7 @@ export class PessoaCadastroComponent implements OnInit {
     }
     this.service.salvar(this.dto).subscribe(retorno => {
       this.dto = retorno;
-      this.messageService.add({ severity: 'success', summary: 'Atenção', detail: 'Pessoa salva com sucesso' });
+      this.messageService.add({ severity: 'success', summary: 'Atenção', detail: 'Participante salva com sucesso' });
       this.limpar();
     }, (erro: HttpErrorResponse) => {
       this.messageService.add({ severity: 'warn', summary: 'Atenção', detail: erro.error });
@@ -74,10 +78,12 @@ export class PessoaCadastroComponent implements OnInit {
   consultarPorId(id: number) {
     this.service.consultarPorId(id).subscribe(retorno => {
       this.dto = retorno;
+      console.log(this.dto)
     }, () => {
       this.messageService.add({ severity: 'error', summary: 'Erro', detail: 'Erro ao realizar consulta' });
     });
   }
+
 
   alterar() {
     if (!this.validarForm()) {
@@ -85,7 +91,7 @@ export class PessoaCadastroComponent implements OnInit {
     }
     this.service.alterar(this.dto).subscribe(retorno => {
       this.consultarPorId(retorno.id)
-      this.messageService.add({ severity: 'success', summary: 'Atenção', detail: 'Pessoa alterada com sucesso' })
+      this.messageService.add({ severity: 'success', summary: 'Atenção', detail: 'Participante alterada com sucesso' })
     }, (erro: HttpErrorResponse) => {
       this.messageService.add({ severity: 'warn', summary: 'Atenção', detail: erro.error });
     });

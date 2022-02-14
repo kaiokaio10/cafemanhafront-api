@@ -1,7 +1,7 @@
 <p-toast></p-toast>
 <div class="content-section implementation">
     <div class="card">
-        <h2>{{edicao? 'Alterar' : 'Cadastrar' }} Pessoa</h2>
+        <h2>{{edicao? 'Alterar' : 'Cadastrar' }} Participante</h2>
 
         <div class="p-fluid">
             <div class="p-field">
@@ -14,9 +14,9 @@
                     placeholder="000.000.000-00"></p-inputMask>
             </div>
 
-            <label for="cafemanha">Item Café da Manhã</label>
+            <label for="cafemanha">Trazer para o café da manha</label>
             <p-listbox [options]="listaItemCafeManha" [(ngModel)]="dto.listaSelecionado" [metaKeySelection]="false"
-                [checkbox]="true" [filter]="true" [multiple]="true" optionLabel="nome" 
+                [checkbox]="true" [filter]="true" name="listaSelecionado" [multiple]="true" optionLabel="nome" 
                 emptyFilterMessage="Nenhum registro encontrado" emptyMessage="Nenhum Item café da manhã cadastrado">
             </p-listbox>
 
