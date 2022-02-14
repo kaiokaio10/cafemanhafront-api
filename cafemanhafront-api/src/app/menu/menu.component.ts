@@ -11,9 +11,7 @@ export class MenuComponent implements OnInit {
 
   items: MegaMenuItem[];
 
-  constructor(
-    private router: Router,
-  ) { }
+  constructor( ) { }
 
   ngOnInit(): void {
     this.items = [
@@ -32,7 +30,7 @@ export class MenuComponent implements OnInit {
         items: [
           [
             {
-              items: [{ label: 'Pesquisar', url: '/#/listagem' }, { label: 'Cadastrar', url: '/#/cadastro' }]
+              items: [{ label: 'Pesquisar', url: '/#/participante/listagem' }, { label: 'Cadastrar', url: '/#/participante/cadastro' }]
             },
           ],
         ]

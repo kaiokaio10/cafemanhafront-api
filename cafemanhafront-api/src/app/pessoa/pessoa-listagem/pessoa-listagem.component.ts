@@ -60,7 +60,6 @@ export class PessoaListagemComponent implements OnInit {
             accept: () => {
                 this.excluir(id);
                 this.limpar();
-                this.pesquisar();
             },
             reject: () => {
                 this.messageService.add({ severity: 'info', summary: 'Excluída', detail: 'com sucesso' });
@@ -75,11 +74,11 @@ export class PessoaListagemComponent implements OnInit {
     }
 
     openNovo() {
-        this.router.navigate(['/cadastro']);
+        this.router.navigate(['/participante/cadastro']);
     }
 
     openEditar(id: number) {
-        this.router.navigate(['/cadastro', { id: id }]);
+        this.router.navigate(['/participante/cadastro', { id: id }]);
     }
 
 

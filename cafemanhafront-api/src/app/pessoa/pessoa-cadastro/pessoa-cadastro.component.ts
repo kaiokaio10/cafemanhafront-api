@@ -46,7 +46,7 @@ export class PessoaCadastroComponent implements OnInit {
       return false;
     }
     if (this.dto.listaSelecionado.length === 0) {
-      this.messageService.add({ severity: 'warn', summary: 'Atenção', detail: 'Nenhum item do café da manha selecionado  não preenchido.' });
+      this.messageService.add({ severity: 'warn', summary: 'Atenção', detail: 'Nenhuma opção para o café da manha selecionada' });
       return false;
     }
 
@@ -59,7 +59,7 @@ export class PessoaCadastroComponent implements OnInit {
     }
     this.service.salvar(this.dto).subscribe(retorno => {
       this.dto = retorno;
-      this.messageService.add({ severity: 'success', summary: 'Atenção', detail: 'Participante salva com sucesso' });
+      this.messageService.add({ severity: 'success', summary: 'Atenção', detail: 'Participante salvo com sucesso' });
       this.limpar();
     }, (erro: HttpErrorResponse) => {
       this.messageService.add({ severity: 'warn', summary: 'Atenção', detail: erro.error });
@@ -91,7 +91,7 @@ export class PessoaCadastroComponent implements OnInit {
     }
     this.service.alterar(this.dto).subscribe(retorno => {
       this.consultarPorId(retorno.id)
-      this.messageService.add({ severity: 'success', summary: 'Atenção', detail: 'Participante alterada com sucesso' })
+      this.messageService.add({ severity: 'success', summary: 'Atenção', detail: 'Participante alterado com sucesso' })
     }, (erro: HttpErrorResponse) => {
       this.messageService.add({ severity: 'warn', summary: 'Atenção', detail: erro.error });
     });
@@ -104,7 +104,7 @@ export class PessoaCadastroComponent implements OnInit {
   }
 
   voltar() {
-    this.router.navigate(['/listagem']);
+    this.router.navigate(['/participante/listagem']);
   }
 
   recuperarInfRota() {
