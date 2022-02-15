@@ -53,6 +53,7 @@ export class PessoaListagemComponent implements OnInit {
     excluir(id: number) {
         this.service.excluir(id).subscribe(retorno => {
             this.messageService.add({ severity: 'info', summary: 'Excluído', detail: 'com sucesso' });
+            this.pesquisar();
         }, (erro: HttpErrorResponse) => {
             this.messageService.add({ severity: 'error', summary: 'Erro', detail: 'Erro ao excluir pessoa' });
         });
@@ -67,10 +68,9 @@ export class PessoaListagemComponent implements OnInit {
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
                 this.excluir(id);
-                this.limpar();
             },
             reject: () => {
-                this.messageService.add({ severity: 'info', summary: 'Excluída', detail: 'com sucesso' });
+                this.messageService.add({ severity: 'info', summary: 'Cancelado', detail: 'com sucesso' });
             }
         });
     }
