@@ -62,7 +62,7 @@ export class PessoaCadastroComponent implements OnInit {
       this.messageService.add({ severity: 'success', summary: 'Atenção', detail: 'Participante salvo com sucesso' });
       this.limpar();
     }, (erro: HttpErrorResponse) => {
-      this.messageService.add({ severity: 'warn', summary: 'Atenção', detail: erro.error });
+      this.messageService.add({ severity: 'warn', summary: 'Atenção', detail: 'Esse CPF já esta cadastrado ' });
     });
   }
 

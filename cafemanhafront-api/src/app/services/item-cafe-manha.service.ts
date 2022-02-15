@@ -16,8 +16,4 @@ export class ItemCafeManhaService {
         return this.http.get<ItemCafeManha[]>(this.apiURL);
     }
 
-    consultarItemPorId(id: number): Observable<ItemCafeManha> {
-        return this.http.get<ItemCafeManha>(`${this.apiURL}/pessoaitem/${id}`);
-    }
-
 }

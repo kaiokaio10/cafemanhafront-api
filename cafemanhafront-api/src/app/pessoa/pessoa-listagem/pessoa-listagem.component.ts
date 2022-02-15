@@ -2,7 +2,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { ItemCafeManha } from 'src/app/model/item-cafe-manha';
 import { Pessoa } from 'src/app/model/pessoa';
+import { ItemCafeManhaService } from 'src/app/services/item-cafe-manha.service';
+import { PessoaItemCafeManhaService } from 'src/app/services/pessoa-item-cafe-manha.service';
 import { PessoaService } from 'src/app/services/pessoa.service';
 
 @Component({
@@ -16,12 +20,16 @@ export class PessoaListagemComponent implements OnInit {
     public display: boolean = false;
     public dto: Pessoa;
     public exibir: boolean = false;
+    public itemCafeManha : ItemCafeManha []= [];
+    displayModal: boolean;
 
     constructor(
         private router: Router,
         private service: PessoaService,
         private messageService: MessageService,
         private confirmationService: ConfirmationService,
+        public dialogService: DialogService,
+        private servicePesoaItem : PessoaItemCafeManhaService,
     ) { }
 
     ngOnInit() {
@@ -81,5 +89,13 @@ export class PessoaListagemComponent implements OnInit {
         this.router.navigate(['/participante/cadastro', { id: id }]);
     }
 
-
+    showModalDialog(idPessoa : number) {
+        this.servicePesoaItem.pesquisarItemCafeManhaPorIdPessoa(idPessoa).subscribe(retorno => {
+            this.displayModal = true;
+            this.itemCafeManha = retorno;
+        }, (erro: HttpErrorResponse) => {
+            this.messageService.add({ severity: 'warn', summary: 'Atenção', detail: erro.error });
+        });
+        
+    }
 }

@@ -26,6 +26,9 @@ export class PessoaService {
     consultarPorId(id: number): Observable<Pessoa> {
         return this.http.get<Pessoa>(`${this.apiURL}/${id}`);
     }
+    consultarItemPorId(id: number): Observable<Pessoa> {
+        return this.http.get<Pessoa>(`${this.apiURL}/item/${id}`);
+    }
 
     salvar(dto: Pessoa): Observable<Pessoa> {
         return this.http.post<Pessoa>(this.apiURL, dto);
@@ -40,12 +43,6 @@ export class PessoaService {
         return this.http.post<Pessoa[]>(`${this.apiURL}/pesquisar`, dto);
     }
 
-    visualizar(lista: Pessoa[]): Promise<any> {
-        return this.http.get(this.apiURL)
-            .toPromise()
-            .then(Response => console.log(Response));
-
-    }
     visualizarListaCompleta(): Observable<Pessoa[]> {
         return this.http.get<Pessoa[]>(`${this.apiURL}/listartodos`);
     }

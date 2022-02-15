@@ -22,6 +22,7 @@ import {DialogModule} from 'primeng/dialog';
 import {ListboxModule} from 'primeng/listbox';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
+import {DialogService} from 'primeng/dynamicdialog';
 
 
 
@@ -51,11 +52,11 @@ import { MenuComponent } from './menu/menu.component';
     TableModule,
     ConfirmPopupModule,
     DialogModule,
-    ListboxModule
+    ListboxModule,
     
     
   ],
-  providers: [  MessageService, ConfirmationService],
+  providers: [  MessageService, ConfirmationService,DialogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

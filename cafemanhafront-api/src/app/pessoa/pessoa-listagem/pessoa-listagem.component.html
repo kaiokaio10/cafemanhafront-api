@@ -53,6 +53,15 @@
                         &nbsp;
                         <p-button (click)="openEditar(dtoView.id)" pTooltip="Alterar" icon="pi pi-pencil"
                             tooltipPosition="left"></p-button>
+                        &nbsp;
+                        <p-button (click)="showModalDialog(dtoView.id)" icon="pi pi-external-link" pTooltip="Item para o café da manha" ></p-button>
+                        <p-dialog header="Itens Selecionados" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
+                            [draggable]="false" [resizable]="false">
+                            <li *ngFor="let item of itemCafeManha"> 
+                                
+                                {{ item.nome }} - {{ item.descricao }}
+                              </li>
+                        </p-dialog>
                     </td>
                 </tr>
             </ng-template>
