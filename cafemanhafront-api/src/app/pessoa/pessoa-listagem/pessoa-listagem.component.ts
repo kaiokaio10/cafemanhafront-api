@@ -2,10 +2,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DialogService } from 'primeng/dynamicdialog';
 import { ItemCafeManha } from 'src/app/model/item-cafe-manha';
 import { Pessoa } from 'src/app/model/pessoa';
-import { ItemCafeManhaService } from 'src/app/services/item-cafe-manha.service';
 import { PessoaItemCafeManhaService } from 'src/app/services/pessoa-item-cafe-manha.service';
 import { PessoaService } from 'src/app/services/pessoa.service';
 
@@ -70,7 +69,6 @@ export class PessoaListagemComponent implements OnInit {
                 this.excluir(id);
             },
             reject: () => {
-                this.messageService.add({ severity: 'info', summary: 'Cancelado', detail: 'com sucesso' });
             }
         });
     }

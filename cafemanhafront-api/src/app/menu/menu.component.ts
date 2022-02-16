@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MegaMenuItem } from 'primeng/api';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
